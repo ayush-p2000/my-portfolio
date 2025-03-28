@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Footer = () => {
+const Footer = ({ id }: { id?: string }) => {
   const socialLinks = [
     { name: "GitHub", url: "https://github.com" },
     { name: "LinkedIn", url: "https://linkedin.com" },

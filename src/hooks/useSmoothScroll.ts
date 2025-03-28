@@ -4,7 +4,34 @@ import { useEffect } from 'react';
 
 export const useSmoothScroll = () => {
   useEffect(() => {
-    const handleScroll = () => {
+    // Function to handle smooth scrolling
+    const smoothScrollToSection = (targetSection: HTMLElement) => {
+      targetSection.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      });
+    };
+
+    // Add smooth scroll to all internal links
+    const handleLinkClick = (event: MouseEvent) => {
+      const target = event.target as HTMLAnchorElement;
+      
+      // Check if it's an internal hash link
+      if (target.tagName === 'A' && target.hash) {
+        event.preventDefault();
+        const targetSection = document.querySelector(target.hash) as HTMLElement;
+        
+        if (targetSection) {
+          smoothScrollToSection(targetSection);
+        }
+      }
+    };
+
+    // Add click event listener to the document
+    document.addEventListener('click', handleLinkClick);
+
+    // Optional: Highlight active section
+    const highlightActiveSection = () => {
       const sections = document.querySelectorAll('section');
       const scrollPosition = window.scrollY;
 
@@ -23,9 +50,16 @@ export const useSmoothScroll = () => {
       });
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial call to set first section as active
+    // Add scroll event listener
+    window.addEventListener('scroll', highlightActiveSection);
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Initial call to set first section as active
+    highlightActiveSection();
+
+    // Cleanup
+    return () => {
+      document.removeEventListener('click', handleLinkClick);
+      window.removeEventListener('scroll', highlightActiveSection);
+    };
   }, []);
 };

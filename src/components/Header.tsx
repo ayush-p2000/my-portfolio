@@ -10,25 +10,27 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 w-full bg-secondary shadow-md z-50">
+    <header className="fixed top-0 w-full bg-secondary/50 backdrop-blur-md shadow-md z-50">
       <nav className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
-          <Link href="#home" className="text-2xl font-bold text-accent">
+          <a 
+            href="#home" 
+            className="text-2xl font-bold text-accent"
+          >
             MyPortfolio
-          </Link>
+          </a>
           <ul className="hidden md:flex space-x-8">
             {links.map((link) => (
               <li key={link.name}>
-                <Link
+                <a
                   href={link.href}
                   className="hover:text-accent transition-colors"
                 >
                   {link.name}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
-          {/* Mobile menu button would go here */}
         </div>
       </nav>
     </header>

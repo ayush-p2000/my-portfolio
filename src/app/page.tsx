@@ -1,6 +1,6 @@
 'use client';
 
-import { useSmoothScroll } from '@/hooks/useSmoothScroll';
+import { useSnapScroll } from '@/hooks/useSnapScroll';
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -10,16 +10,16 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  useSmoothScroll();
+  useSnapScroll();
 
   return (
     <main>
         <Header />
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
+        <Hero id="home" />
+        <About id="about" />
+        <Projects id="projects" />
+        <Skills id="skills" />
+        <Contact id="contact" />
         <Footer /> 
     </main>
   );
