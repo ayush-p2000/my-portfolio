@@ -8,12 +8,15 @@ import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from '@/context/ThemeProvider';
 
 export default function Home() {
   useSnapScroll();
 
   return (
-    <main>
+    <ThemeProvider>
+      <main>
+      
         <Header />
         <Hero id="home" />
         <About id="about" />
@@ -21,6 +24,8 @@ export default function Home() {
         <Skills id="skills" />
         <Contact id="contact" />
         <Footer /> 
-    </main>
+      
+      </main>
+    </ThemeProvider>
   );
 }

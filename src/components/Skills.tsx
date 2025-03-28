@@ -1,6 +1,6 @@
 import { skills } from "../constants";
 
-const Skills = () => {
+const Skills = ({ id }: { id?: string }) => {
   return (
     <section id="skills" className="container mx-auto px-6 py-16">
       <h2 className="text-center mb-12">My Skills</h2>

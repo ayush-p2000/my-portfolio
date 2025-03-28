@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const About = () => {
+const About = ({ id }: { id?: string }) => {
   return (
     <section id="about" className="container mx-auto px-6">
       <h2 className="text-center mb-12">About Me</h2>

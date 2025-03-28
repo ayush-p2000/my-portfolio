@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Header = () => {
+const Header = ({ id }: { id?: string }) => {
   const links = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },

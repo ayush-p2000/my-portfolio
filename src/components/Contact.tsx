@@ -1,4 +1,4 @@
-const Contact = () => {
+const Contact = ({ id }: { id?: string }) => {
     return (
       <section id="contact" className="bg-secondary">
         <div className="container mx-auto px-6 py-16">

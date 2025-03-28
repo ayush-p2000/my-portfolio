@@ -2,7 +2,7 @@ import { projects } from "../constants";
 import Image from "next/image";
 import Link from "next/link";
 
-const Projects = () => {
+const Projects = ({ id }: { id?: string }) => {
   return (
     <section id="projects" className="bg-secondary">
       <div className="container mx-auto px-6 py-16">
