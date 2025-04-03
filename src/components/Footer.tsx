@@ -1,39 +1,55 @@
-"use client";
-
 import Link from "next/link";
-import { useTheme } from "@/context/ThemeProvider";
-import { Moon, Sun } from "lucide-react";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
-const Footer = ({ id }: { id?: string }) => {
-  const { theme, toggleTheme } = useTheme();
-  
+interface FooterProps {
+  className?: string;
+}
+
+const Footer = ({ className = "" }: FooterProps) => {
+  const currentYear = new Date().getFullYear();
   const socialLinks = [
-    { name: "GitHub", url: "https://github.com" },
-    { name: "LinkedIn", url: "https://linkedin.com" },
-    { name: "Twitter", url: "https://twitter.com" },
+    {
+      name: "GitHub",
+      url: "https://github.com",
+      icon: <FaGithub className="w-5 h-5" />,
+    },
+    {
+      name: "LinkedIn",
+      url: "https://linkedin.com",
+      icon: <FaLinkedin className="w-5 h-5" />,
+    },
+    {
+      name: "Twitter",
+      url: "https://twitter.com",
+      icon: <FaTwitter className="w-5 h-5" />,
+    },
   ];
 
   return (
-    <footer className="bg-primary border-t border-gray-800">
-      <div className="container mx-auto px-6 py-8">
+    <footer
+      className={`sticky top-[100vh] w-full bg-primary border-t border-gray-700 ${className}`}
+    >
+      <div className="container mx-auto px-4 sm:px-6 py-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <p className="text-gray-400">© {new Date().getFullYear()} Your Name. All rights reserved.</p>
-          </div>
-          <div className="flex space-x-4">
+          <p className="text-sm text-gray-400 mb-4 md:mb-0">
+            &copy; {currentYear} My Portfolio. All rights reserved.
+          </p>
+          
+          <div className="flex space-x-6">
             {socialLinks.map((link) => (
-              <Link key={link.name} href={link.url} className="text-gray-400 hover:text-white">
-                {link.name}
+              <Link
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.name}
+                className="text-gray-400 hover:text-accent transition-colors duration-300"
+              >
+                {link.icon}
+                <span className="sr-only">{link.name}</span>
               </Link>
             ))}
           </div>
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:scale-110 transition"
-            aria-label="Toggle Theme"
-          >
-            {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-          </button>
         </div>
       </div>
     </footer>
